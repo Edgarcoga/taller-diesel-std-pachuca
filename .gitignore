@@ -13,3 +13,6 @@ desktop.ini
 # Temp files
 *.tmp
 *.log
+
+# Original media inbox (local source material, not for deployment)
+media/inbox/
