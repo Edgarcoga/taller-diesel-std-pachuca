@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollReveal();
   initStatCounters();
   initMediaRotators();
+  initServiceCards();
+  initFaqAccordions();
   initCarousels();
   initBeforeAfter();
   initLightbox();
@@ -31,6 +33,185 @@ function initHeader() {
 
   window.addEventListener('scroll', onScroll, { passive: true });
   onScroll();
+}
+
+/* ── FAQ: nested exclusive accordions ───── */
+function initFaqAccordions() {
+  const categories = [...document.querySelectorAll('.faq-category')];
+  if (!categories.length) return;
+
+  const closeQuestion = question => {
+    question.classList.remove('is-open');
+    question.querySelector('.faq-question__trigger')?.setAttribute('aria-expanded', 'false');
+  };
+
+  const closeCategory = category => {
+    category.classList.remove('is-open');
+    category.querySelector('.faq-category__trigger')?.setAttribute('aria-expanded', 'false');
+    category.querySelectorAll('.faq-question').forEach(closeQuestion);
+  };
+
+  categories.forEach(category => {
+    const categoryTrigger = category.querySelector('.faq-category__trigger');
+    const questions = [...category.querySelectorAll('.faq-question')];
+    if (!categoryTrigger) return;
+
+    categoryTrigger.addEventListener('click', () => {
+      const willOpen = !category.classList.contains('is-open');
+
+      categories.forEach(otherCategory => {
+        if (otherCategory !== category) closeCategory(otherCategory);
+      });
+
+      if (willOpen) {
+        category.classList.add('is-open');
+        categoryTrigger.setAttribute('aria-expanded', 'true');
+      } else {
+        closeCategory(category);
+      }
+    });
+
+    questions.forEach(question => {
+      const questionTrigger = question.querySelector('.faq-question__trigger');
+      if (!questionTrigger) return;
+
+      questionTrigger.addEventListener('click', () => {
+        const willOpen = !question.classList.contains('is-open');
+
+        questions.forEach(otherQuestion => {
+          if (otherQuestion !== question) closeQuestion(otherQuestion);
+        });
+
+        question.classList.toggle('is-open', willOpen);
+        questionTrigger.setAttribute('aria-expanded', String(willOpen));
+      });
+    });
+  });
+}
+
+/* ── Services: expandable cards ──────────── */
+function initServiceCards() {
+  const cards = [...document.querySelectorAll('.service-card')];
+  if (!cards.length) return;
+
+  const whatsappNumber = '5217711288281';
+  const serviceActions = {
+    'servicio-diagnostico': {
+      label: 'Solicitar diagnóstico por escáner',
+      message: 'Hola, me interesa solicitar un diagnóstico por escáner. ¿Podrían brindarme información sobre disponibilidad y costo?'
+    },
+    'servicio-inyectores': {
+      label: 'Solicitar servicio de inyectores',
+      message: 'Hola, me interesa solicitar diagnóstico y servicio para inyectores diésel. ¿Podrían orientarme sobre el proceso y la cotización?'
+    },
+    'servicio-turbos': {
+      label: 'Solicitar reparación de turbo',
+      message: 'Hola, me interesa solicitar diagnóstico y reparación de un turbocargador. ¿Podrían indicarme cómo llevar la unidad o el componente para revisión?'
+    },
+    'servicio-bombas': {
+      label: 'Solicitar servicio de bomba de inyección',
+      message: 'Hola, me interesa solicitar revisión, reparación o calibración de una bomba de inyección. ¿Podrían brindarme información y una cotización?'
+    },
+    'servicio-motores': {
+      label: 'Solicitar servicio de motor',
+      message: 'Hola, me interesa solicitar diagnóstico o servicio para un motor. ¿Podrían orientarme sobre disponibilidad y cotización?'
+    },
+    'servicio-mantenimiento': {
+      label: 'Solicitar mantenimiento diésel',
+      message: 'Hola, me interesa programar un servicio de mantenimiento diésel. ¿Podrían brindarme información sobre disponibilidad y costo?'
+    }
+  };
+
+  let modal = null;
+  let activeCard = null;
+  let previousOverflow = '';
+
+  const closeModal = () => {
+    if (!modal || !activeCard) return;
+
+    modal.classList.remove('active');
+    activeCard.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = previousOverflow;
+
+    const cardToFocus = activeCard;
+    const modalToRemove = modal;
+    modal = null;
+    activeCard = null;
+
+    window.setTimeout(() => {
+      modalToRemove.remove();
+      cardToFocus.focus();
+    }, 300);
+  };
+
+  const openModal = (card) => {
+    if (modal) return;
+
+    const media = card.querySelector('.service-card__media');
+    const image = media?.querySelector('img');
+    const title = card.querySelector('.service-card__title')?.textContent.trim() || 'Servicio técnico';
+    const description = card.querySelector('.service-card__text')?.textContent.trim() || '';
+    const containsImage = media?.classList.contains('service-card__media--contain');
+    const action = serviceActions[card.dataset.mediaSlot] || {
+      label: `Solicitar ${title}`,
+      message: `Hola, me interesa solicitar información sobre el servicio de ${title}.`
+    };
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(action.message)}`;
+
+    modal = document.createElement('div');
+    modal.className = 'service-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.setAttribute('aria-label', title);
+    modal.innerHTML = `
+      <article class="service-modal__card">
+        <button class="service-modal__close" type="button" aria-label="Cerrar detalles">&times;</button>
+        <div class="service-modal__media${containsImage ? ' service-card__media--contain' : ''}">
+          <img src="${image?.getAttribute('src') || ''}" alt="${image?.getAttribute('alt') || ''}">
+        </div>
+        <div class="service-modal__body">
+          <h3 class="service-modal__title">${title}</h3>
+          <p class="service-modal__text">${description}</p>
+          <a class="service-modal__cta" href="${whatsappUrl}" target="_blank" rel="noopener">${action.label} por WhatsApp&nbsp; →</a>
+        </div>
+      </article>`;
+
+    activeCard = card;
+    activeCard.setAttribute('aria-expanded', 'true');
+    previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    document.body.appendChild(modal);
+
+    modal.querySelector('.service-modal__close').addEventListener('click', closeModal);
+    modal.addEventListener('click', (event) => {
+      if (event.target === modal) closeModal();
+    });
+
+    requestAnimationFrame(() => {
+      modal.classList.add('active');
+      modal.querySelector('.service-modal__close').focus();
+    });
+  };
+
+  cards.forEach(card => {
+    const title = card.querySelector('.service-card__title')?.textContent.trim() || 'servicio';
+    card.setAttribute('role', 'button');
+    card.setAttribute('tabindex', '0');
+    card.setAttribute('aria-label', `Ver detalles de ${title}`);
+    card.setAttribute('aria-expanded', 'false');
+
+    card.addEventListener('click', () => openModal(card));
+    card.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter' || event.key === ' ') {
+        event.preventDefault();
+        openModal(card);
+      }
+    });
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && modal) closeModal();
+  });
 }
 
 /* ── Navigation: active section + sliding pill ── */
@@ -260,16 +441,35 @@ function initMediaRotators() {
     const items = Array.from(rotator.querySelectorAll('.media-rotator__item'));
     if (!items.length) return;
 
+    const isHeroCarousel = rotator.classList.contains('hero__media');
+    const previousButton = rotator.querySelector('[data-hero-prev]');
+    const nextButton = rotator.querySelector('[data-hero-next]');
     let current = 0;
     let timerId;
     const interval = 3000;
 
     const show = index => {
-      current = index;
+      current = (index + items.length) % items.length;
+
       items.forEach((item, itemIndex) => {
         const isActive = itemIndex === current;
+        let relativePosition = itemIndex - current;
+
+        if (relativePosition > items.length / 2) relativePosition -= items.length;
+        if (relativePosition < -items.length / 2) relativePosition += items.length;
+
+        const isPrevious = isHeroCarousel && relativePosition === -1;
+        const isNext = isHeroCarousel && relativePosition === 1;
+
         item.classList.toggle('is-active', isActive);
+        item.classList.toggle('is-prev', isPrevious);
+        item.classList.toggle('is-next', isNext);
         item.setAttribute('aria-hidden', String(!isActive));
+
+        if (isHeroCarousel) {
+          item.style.setProperty('--carousel-offset', `${relativePosition * 108}%`);
+          item.style.setProperty('--carousel-scale', isActive ? '1' : '0.82');
+        }
       });
     };
 
@@ -284,6 +484,22 @@ function initMediaRotators() {
         show((current + 1) % items.length);
       }, interval);
     };
+
+    const move = direction => {
+      stop();
+      show(current + direction);
+      start();
+    };
+
+    previousButton?.addEventListener('click', () => move(-1));
+    nextButton?.addEventListener('click', () => move(1));
+
+    if (isHeroCarousel) {
+      rotator.addEventListener('mouseenter', stop);
+      rotator.addEventListener('mouseleave', start);
+      rotator.addEventListener('focusin', stop);
+      rotator.addEventListener('focusout', start);
+    }
 
     show(0);
 

@@ -24,6 +24,36 @@
 
 Coloca los originales en `media/inbox/photos/` y `media/inbox/videos/`. También se puede usar Google Drive únicamente para transferir los archivos; los enlaces de Drive no deben insertarse directamente en el sitio publicado. Consulta `media/README.md` para ver el flujo completo de optimización y publicación.
 
+## Publicar en GitHub Pages
+
+El repositorio ya incluye el flujo `.github/workflows/deploy-pages.yml`. Cada cambio enviado a la rama `master` publica el sitio automáticamente.
+
+La primera vez, en GitHub abre **Settings → Pages**, selecciona **GitHub Actions** como fuente de publicación y espera a que termine el flujo llamado **Deploy static site to GitHub Pages**. La dirección publicada será `https://edgarcoga.github.io/taller-diesel-std-pachuca/`.
+
+No se deben subir videos ni archivos originales al repositorio: GitHub Pages sirve el HTML, CSS, JavaScript e imágenes; Cloudinary entrega los videos desde su CDN.
+
+## Videos con Cloudinary
+
+`js/cloudinary-video.js` ya está cargado en la página y crea un reproductor optimizado cuando se agregue un contenedor como este donde se quiera mostrar el video:
+
+```html
+<div class="hero__media"
+     data-cloudinary-video="std-pachuca/hero-taller-01"
+     data-cloudinary-cloud="TU_CLOUD_NAME"
+     data-cloudinary-poster="std-pachuca/hero-taller-01"
+     data-cloudinary-autoplay="true"
+     data-cloudinary-controls="false"
+     data-cloudinary-label="Recorrido por el laboratorio STD Pachuca"></div>
+```
+
+Pasos por cada video:
+
+1. Sube un MP4 corto a la carpeta `std-pachuca/` en Cloudinary y copia su **Public ID** (no la URL completa).
+2. Sustituye `TU_CLOUD_NAME` por el nombre de nube de Cloudinary y el `data-cloudinary-video` por el Public ID.
+3. Si es un video de portada, mantén `autoplay="true"`, sin audio y de 10–20 segundos. Para un video informativo, omite ese atributo y deja los controles activos.
+
+El módulo limita la entrega a 1280 px y usa `q_auto` + `f_auto`: Cloudinary adapta calidad y formato al navegador. La clave API y el API secret nunca se agregan al HTML ni al repositorio. Para subir manualmente desde el panel de Cloudinary no se requieren en el sitio.
+
 ---
 
 ## Cómo Modificar el Sitio

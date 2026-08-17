@@ -58,7 +58,9 @@ Carpeta: `media/inbox/photos/gallery/`
 - Las fotografías seleccionadas se recortarán y convertirán a WebP o AVIF.
 - Se generarán tamaños distintos para celular y escritorio.
 - Los archivos finales irán a `images/gallery/`, `images/services/`, `images/cases/` o `images/branding/`.
-- Los videos se comprimirán a MP4/WebM o se publicarán mediante un servicio de video, según su duración y peso.
+- Los videos se subirán a Cloudinary; no se guardan en GitHub ni se insertan enlaces de Google Drive.
+- Para cuidar el plan gratuito, prioriza clips de 10 a 20 segundos, 1080p máximo, sin audio si se reproducen automáticamente y un solo corte final por video. Evita crear muchas variantes o volver a subir revisiones que no se usarán.
+- La página entrega cada video con calidad, formato y ancho optimizados desde `js/cloudinary-video.js`. Consulta el `README.md` principal para insertar un video por su Public ID.
 - Los originales permanecerán separados de los archivos optimizados.
 
 No publicar fotografías con placas, rostros o datos personales sin autorización.

@@ -60,7 +60,7 @@
   </script>
 
   <!-- ── Styles ───────────────────────────── -->
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/styles.css?v=20260810-4">
 
   <!-- ── Favicons ─────────────────────────── -->
   <link rel="icon" type="image/png" sizes="32x32" href="media/favicon-32x32.png">
@@ -131,6 +131,10 @@
         <figure class="media-rotator__item" style="--slide: 3;"><img src="images/hero/hero-04.webp" alt="Representación de un sistema de inyección diésel" width="1024" height="576"></figure>
         <figure class="media-rotator__item" style="--slide: 4;"><img src="images/hero/hero-05.webp" alt="Camión atendido en un taller diésel" width="1920" height="1920"></figure>
         <figure class="media-rotator__item" style="--slide: 5;"><img src="images/hero/hero-06.webp" alt="Vista de un turbocargador" width="335" height="597"></figure>
+        <div class="hero-carousel__controls" aria-label="Controles de imágenes del taller">
+          <button class="hero-carousel__button" type="button" data-hero-prev aria-label="Ver imagen anterior">←</button>
+          <button class="hero-carousel__button" type="button" data-hero-next aria-label="Ver imagen siguiente">→</button>
+        </div>
       </div>
     </div>
   </section>
@@ -233,6 +237,7 @@
           <p class="service-card__text">
             Diagnóstico computarizado y escáner diésel para identificar códigos de falla y orientar la reparación adecuada de cada unidad.
           </p>
+          <span class="service-card__more">Saber más <span aria-hidden="true">→</span></span>
         </div>
 
         <!-- Service 2: Inyectores -->
@@ -251,6 +256,7 @@
           <p class="service-card__text">
             Diagnóstico, reparación y calibración de inyectores diésel Common Rail y convencionales mediante procesos de laboratorio.
           </p>
+          <span class="service-card__more">Saber más <span aria-hidden="true">→</span></span>
         </div>
 
         <!-- Service 3: Turbos -->
@@ -267,6 +273,7 @@
           <p class="service-card__text">
             Diagnóstico y reparación de turbocargadores para automóvil, camión y maquinaria, de acuerdo con el estado de cada componente.
           </p>
+          <span class="service-card__more">Saber más <span aria-hidden="true">→</span></span>
         </div>
 
         <!-- Service 4: Bombas -->
@@ -282,6 +289,7 @@
           <p class="service-card__text">
             Reparación y calibración de bombas de inyección mecánicas y electrónicas en banco de pruebas especializado. Bombas rotativas, en línea y common rail.
           </p>
+          <span class="service-card__more">Saber más <span aria-hidden="true">→</span></span>
         </div>
 
         <!-- Service 5: Motores -->
@@ -300,6 +308,7 @@
           <p class="service-card__text">
             Servicio y mantenimiento para unidades diésel, además de afinación y servicios seleccionados para vehículos de gasolina e híbridos.
           </p>
+          <span class="service-card__more">Saber más <span aria-hidden="true">→</span></span>
         </div>
 
         <!-- Service 6: Caterpillar C9 -->
@@ -315,6 +324,7 @@
           <p class="service-card__text">
             Mantenimiento preventivo y correctivo para ayudar a conservar el rendimiento y prolongar la vida útil de vehículos, camiones y maquinaria.
           </p>
+          <span class="service-card__more">Saber más <span aria-hidden="true">→</span></span>
         </div>
 
       </div>
@@ -489,6 +499,153 @@
             <span class="brand-item"><img src="images/brands/delphi.png" alt="" loading="lazy"></span>
             <span class="brand-item"><img src="images/brands/bosch.svg" alt="" loading="lazy"></span>
             <span class="brand-item"><img src="images/brands/caterpillar.svg" alt="" loading="lazy"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════════════
+       PREGUNTAS FRECUENTES
+       ════════════════════════════════════════ -->
+  <section class="faq section-padding" id="preguntas">
+    <div class="container faq__layout">
+      <div class="faq__header reveal">
+        <span class="section-label">Resolvemos sus dudas</span>
+        <h2 class="section-title">Preguntas<br>frecuentes</h2>
+        <p>Encuentre información sobre nuestros servicios, procesos, vehículos atendidos, pagos y garantías.</p>
+      </div>
+
+      <div class="faq__categories reveal reveal-delay-1">
+        <div class="faq-category">
+          <button class="faq-category__trigger" type="button" aria-expanded="false" aria-controls="faq-category-services">
+            <span><small>01</small> Servicios</span><span class="faq__plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-category__panel" id="faq-category-services">
+            <div class="faq-category__content">
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-services-1">¿Qué servicios ofrecen?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-services-1"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Realizamos una amplia variedad de servicios para vehículos diésel y gasolina, entre ellos:</p><ul><li>Lavado profesional de inyectores.</li><li>Diagnóstico y reparación de bombas de inyección.</li><li>Reparación de bombas de alta presión.</li><li>Diagnóstico y reparación de turbocargadores.</li><li>Diagnóstico de fallas electrónicas.</li><li>Afinaciones y mantenimiento preventivo.</li><li>Cambio de aceite y filtros.</li><li>Venta de algunos componentes del sistema de inyección y motor.</li></ul></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-services-2">¿Son especialistas en sistemas Common Rail?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-services-2"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. Somos especialistas en sistemas Common Rail y contamos con bancos de prueba especializados para revisar y calibrar sus componentes.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-services-3">¿Realizan mantenimiento preventivo?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-services-3"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. El mantenimiento preventivo ayuda a mejorar el rendimiento del motor y prolongar su vida útil.</p><p>Incluye cambio de aceite y filtros, mantenimiento de inyectores, diagnóstico de problemas y servicios correctivos cuando son necesarios.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <button class="faq-category__trigger" type="button" aria-expanded="false" aria-controls="faq-category-diagnosis">
+            <span><small>02</small> Diagnóstico y reparación</span><span class="faq__plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-category__panel" id="faq-category-diagnosis">
+            <div class="faq-category__content">
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-diagnosis-1">¿Cómo es el proceso de diagnóstico y reparación?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-diagnosis-1"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Antes de realizar cualquier reparación efectuamos un diagnóstico para identificar con precisión la falla. Posteriormente le asesoramos sobre las opciones disponibles y, cuando es necesario, verificamos el funcionamiento de los componentes mediante bancos de prueba especializados.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-diagnosis-2">¿Qué tan confiables son sus diagnósticos?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-diagnosis-2"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Nuestros diagnósticos se realizan con equipo especializado del fabricante y por personal capacitado, lo que nos permite ofrecer resultados precisos y confiables.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-diagnosis-3">¿Cuánto tarda una reparación?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-diagnosis-3"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>El tiempo depende del diagnóstico y del componente a reparar. En la mayoría de los casos el trabajo se realiza en un plazo de 1 a 2 días hábiles.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-diagnosis-4">¿Cómo sé si mis inyectores están fallando?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-diagnosis-4"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Algunos síntomas comunes son:</p><ul><li>Humo excesivo.</li><li>Pérdida de potencia.</li><li>Mayor consumo de combustible.</li><li>Jaloneos.</li><li>Dificultad para arrancar.</li></ul></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-diagnosis-5">¿Conviene reparar un inyector o reemplazarlo?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-diagnosis-5"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Depende de su estado. En muchos casos un inyector puede repararse y calibrarse correctamente, evitando el gasto de comprar uno nuevo cuando no es necesario.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-diagnosis-6">¿Pueden revisar una bomba reparada en otro taller?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-diagnosis-6"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. Podemos realizar pruebas en banco para verificar su correcto funcionamiento.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <button class="faq-category__trigger" type="button" aria-expanded="false" aria-controls="faq-category-vehicles">
+            <span><small>03</small> Vehículos que atendemos</span><span class="faq__plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-category__panel" id="faq-category-vehicles">
+            <div class="faq-category__content">
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-vehicles-1">¿Qué tipos de vehículos atienden?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-vehicles-1"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Trabajamos con una gran variedad de vehículos y maquinaria:</p><ul><li>Automóviles diésel, a gasolina e híbridos.</li><li>Camiones.</li><li>Maquinaria agrícola y pesada.</li><li>Equipos industriales.</li><li>Flotillas empresariales y gubernamentales.</li></ul></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-vehicles-2">¿Trabajan con diferentes marcas?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-vehicles-2"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. Atendemos sistemas Bosch, Denso, Delphi, Siemens/VDO, Stanadyne y muchas otras marcas.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <button class="faq-category__trigger" type="button" aria-expanded="false" aria-controls="faq-category-customer">
+            <span><small>04</small> Atención al cliente</span><span class="faq__plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-category__panel" id="faq-category-customer">
+            <div class="faq-category__content">
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-customer-1">¿Cómo puedo solicitar una cotización?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-customer-1"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Envíenos por WhatsApp la marca, modelo, año y falla que presenta el vehículo o componente. Con gusto le orientaremos sin compromiso.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-customer-2">¿Necesito agendar una cita?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-customer-2"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>No es obligatorio, pero sí recomendable para brindarle una atención más rápida y poder asesorarle mejor sobre su problema.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-customer-3">¿Aceptan componentes enviados por paquetería?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-customer-3"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. Recibimos componentes enviados desde cualquier parte de la República Mexicana.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <button class="faq-category__trigger" type="button" aria-expanded="false" aria-controls="faq-category-payment">
+            <span><small>05</small> Pagos y garantía</span><span class="faq__plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-category__panel" id="faq-category-payment">
+            <div class="faq-category__content">
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-payment-1">¿Qué formas de pago aceptan?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-payment-1"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Aceptamos diferentes formas de pago. Contáctenos para conocer las opciones disponibles.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-payment-2">¿Ofrecen garantía?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-payment-2"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. Todos nuestros trabajos cuentan con garantía, respetando las políticas de uso del componente reparado.</p></div></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq-category">
+          <button class="faq-category__trigger" type="button" aria-expanded="false" aria-controls="faq-category-about">
+            <span><small>06</small> Sobre S.T.D. Pachuca</span><span class="faq__plus" aria-hidden="true"></span>
+          </button>
+          <div class="faq-category__panel" id="faq-category-about">
+            <div class="faq-category__content">
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-about-1">¿Por qué elegir S.T.D. Pachuca Laboratorio Diésel?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-about-1"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Porque contamos con más de 30 años de experiencia, equipo especializado, atención personalizada y soluciones confiables para sistemas diésel y gasolina.</p></div></div></div>
+              </div>
+              <div class="faq-question">
+                <button class="faq-question__trigger" type="button" aria-expanded="false" aria-controls="faq-about-2">¿Pueden ayudarme si mi vehículo no pasa la verificación?<span class="faq__plus" aria-hidden="true"></span></button>
+                <div class="faq-question__answer" id="faq-about-2"><div class="faq-question__answer-inner"><div class="faq-question__answer-copy"><p>Sí. Revisamos el funcionamiento del motor y verificamos que el vehículo cuente con el mantenimiento adecuado para identificar la causa del problema.</p></div></div></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -689,6 +846,7 @@
   </div>
 
   <!-- ── JavaScript ───────────────────────── -->
-  <script src="js/main.js"></script>
+  <script src="js/main.js?v=20260810-4"></script>
+  <script src="js/cloudinary-video.js?v=20260817-1"></script>
 </body>
 </html>

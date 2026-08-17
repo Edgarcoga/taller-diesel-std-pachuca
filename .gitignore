@@ -16,3 +16,14 @@ desktop.ini
 
 # Original media inbox (local source material, not for deployment)
 media/inbox/
+
+# Cloudinary upload credentials and local media exports
+.env
+.env.*
+!.env.example
+cloudinary.config.json
+*.mp4
+*.mov
+*.avi
+*.mkv
+*.webm
